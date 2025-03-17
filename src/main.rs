@@ -60,11 +60,10 @@ fn index() -> String {
     );
 
     let tour_str = format!("Beste Tour: {:?}", best_tour);
-    return tour_str;
+    tour_str
 }
 
 #[launch]
 fn rocket() -> _ {
     rocket::build().mount("/", routes![index])
 }
-

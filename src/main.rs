@@ -1,5 +1,5 @@
-use rand::rng;
-use rand::seq::SliceRandom;
+//use rand::rng;
+//use rand::seq::SliceRandom;
 
 #[macro_use]
 extern crate rocket;
@@ -46,10 +46,17 @@ fn lin_kernighan(mut tour: Vec<usize>, cities: &[(f64, f64)]) -> Vec<usize> {
 
 #[get("/")]
 fn index() -> String {
-    let cities = vec![(0.0, 0.0), (1.0, 5.0), (5.0, 2.0), (6.0, 7.0), (3.0, 4.0)];
+    let cities = vec![
+        (50.03317681689108, 7.630692594382566),
+        (50.0511467529328, 7.610264891874095),
+        (50.07417811821386, 7.637215727783678),
+        (50.10154844328665, 7.683642662673185),
+        (50.070237512738046, 7.697022868469907),
+        (50.052876354261926, 7.6108551506699955),
+    ];
 
-    let mut tour: Vec<usize> = (0..cities.len()).collect();
-    tour.shuffle(&mut rng());
+    let tour: Vec<usize> = (0..cities.len()).collect();
+    //tour.shuffle(&mut rng());
 
     let best_tour = lin_kernighan(tour, &cities);
 
